@@ -1,7 +1,5 @@
 <template >
-    <div
-        class="flex flex-col items-center justify-center w-full p-5 m-16 mt-8 bg-white border-2 border-blue-200 shadow-xl rounded-xl opacity-90"
-    >
+    <div class="w-full p-5 m-16 mt-8 bg-white border-2 border-blue-200 shadow-xl rounded-xl opacity-90">
         <div class="flex">
             <div class="w-1/6">
                 <img src="@/assets/logo.png" alt="Logo Belajar Koding" />
@@ -11,7 +9,10 @@
                 <hr class="h-1 mx-8 mt-4 bg-blue-400 rounded-lg" />
             </div>
         </div>
-        <slot></slot>
+        <div class="">
+            <slot></slot>   
+        </div>
+        
     </div>
 </template>
 <script>

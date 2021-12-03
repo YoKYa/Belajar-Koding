@@ -53,7 +53,7 @@ import LogoSide from "@/components/home/LogoSide";
 import Footer from "@/components/Footer";
 
 export default {
-    title: "Belajar Koding - Tentang Belajar Koding",
+    title: "Tentang Belajar Koding - Belajar Koding",
     components: { LogoSide, HomeList, Footer },
     data() {
         return {

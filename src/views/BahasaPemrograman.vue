@@ -3,16 +3,15 @@
         class="flex flex-col items-center justify-around w-full h-screen lg:flex-row"
     >
         <logo-side />
-        <div class="flex justify-center w-1/2 min-h-screen">
+        <div class="flex justify-center w-1/2 min-h-screen ">
             <home-list>
                 <div class="flex w-full h-full mt-4" :class="[isActive ? 'animate-fade-out' : 'animate-fade-in']">
                     <div class="flex flex-col items-center w-full my-2">
-                        <img
-                            src="@/assets/logo.png"
-                            alt="Logo Belajar Koding"
-                            width="200"
-                        />
-                        Bahasa Pemrograman
+                        <div class="grid grid-cols-2 gap-4 overflow-y-auto h-96">
+                            <div class="flex items-center justify-center m-2 text-xl border-2 border-blue-300 rounded-md h-52 w-52">C++</div>
+                            <div class="flex items-center justify-center m-2 text-xl border-2 border-blue-300 rounded-md h-52 w-52">PHP</div>
+                            <div class="flex items-center justify-center m-2 text-xl border-2 border-blue-300 rounded-md h-52 w-52">Python</div>
+                        </div>  
                         <div @click="goTo('/')" class="flex mt-8 font-semibold text-blue-400 cursor-pointer">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +43,7 @@ import LogoSide from "@/components/home/LogoSide";
 import Footer from "@/components/Footer";
 
 export default {
-    title: "Belajar Koding - Bahasa Pemrogramman",
+    title: "Bahasa Pemrogramman - Belajar Koding",
     components: { LogoSide, HomeList, Footer },
     data() {
         return {

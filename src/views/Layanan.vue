@@ -6,14 +6,30 @@
         <div class="flex justify-center w-1/2 min-h-screen">
             <home-list>
                 <div class="flex w-full h-full mt-4" :class="[isActive ? 'animate-fade-out' : 'animate-fade-in']">
-                    <div class="flex flex-col items-center w-full my-2">
+                    <div class="flex flex-col items-center w-full my-2 h-96">
                         <img
                             src="@/assets/logo.png"
                             alt="Logo Belajar Koding"
                             width="200"
                         />
-                        Layanan
-                        <div @click="goTo('/')" class="flex mt-8 font-semibold text-blue-400 cursor-pointer">
+                        <div class="text-xl font-semibold">Layanan</div>
+                        <div class="my-4 w-96">
+                            <ul class="list-disc">
+                                <li class="font-medium">
+                                    Memberikan materi belajar bahasa pemrograman yang menarik
+                                </li>
+                                <li class="font-medium">
+                                    Berbagai bahasa pemrograman yang bisa dipelajari
+                                </li>
+                                <li class="font-medium">
+                                    Soal untuk mengasah kemampuan dalam membuat sebuah program
+                                </li>
+                                <li class="font-medium">
+                                    Menyediakan tempat untuk membuat kode pemrograman secara online
+                                </li>
+                            </ul>
+                        </div>
+                        <div @click="goTo('/')" class="flex font-semibold text-blue-400 cursor-pointer">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 class="w-6 h-6"
@@ -44,7 +60,7 @@ import LogoSide from "@/components/home/LogoSide";
 import Footer from "@/components/Footer";
 
 export default {
-    title: "Belajar Koding - Layanan",
+    title: "Layanan - Belajar Koding",
     components: { LogoSide, HomeList, Footer },
     data() {
         return {

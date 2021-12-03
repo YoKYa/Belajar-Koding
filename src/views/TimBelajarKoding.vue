@@ -44,7 +44,7 @@ import LogoSide from "@/components/home/LogoSide";
 import Footer from "@/components/Footer";
 
 export default {
-    title: "Belajar Koding - Tim Belajar Koding",
+    title: "Tim Belajar Koding - Belajar Koding",
     components: { LogoSide, HomeList, Footer },
     data() {
         return {

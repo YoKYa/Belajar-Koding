@@ -6,13 +6,24 @@
         <div class="flex justify-center w-1/2 min-h-screen">
             <home-list>
                 <div class="flex w-full h-full mt-4" :class="[isActive ? 'animate-fade-out' : 'animate-fade-in']">
-                    <div class="flex flex-col items-center w-full my-2">
+                    <div class="flex flex-col items-center w-full my-2 h-96">
                         <img
                             src="@/assets/logo.png"
                             alt="Logo Belajar Koding"
                             width="200"
                         />
-                        Sosial Media
+                        <div class="text-xl font-semibold">Sosial Media</div>
+                        <div class="grid h-24 grid-cols-3 gap-4 overflow-y-auto">
+                            <div class="flex items-center justify-center w-20 h-20 m-2 text-xl rounded-full">
+                                <img src="@/assets/img/sosmed/Twitter.png" alt="Twitter" width="100" />
+                            </div>
+                            <div class="flex items-center justify-center w-20 h-20 m-2 text-xl rounded-full">
+                                <img src="@/assets/img/sosmed/Facebook.png" alt="Facebook" width="100" />
+                            </div>
+                            <div class="flex items-center justify-center w-20 h-20 m-2 text-xl rounded-full">
+                                <img src="@/assets/img/sosmed/Github.png" alt="Github" width="100" />
+                            </div>
+                        </div>  
                         <div @click="goTo('/')" class="flex mt-8 font-semibold text-blue-400 cursor-pointer">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +55,7 @@ import LogoSide from "@/components/home/LogoSide";
 import Footer from "@/components/Footer";
 
 export default {
-    title: "Belajar Koding - Sosial Media",
+    title: "Sosial Media - Belajar Koding",
     components: { LogoSide, HomeList, Footer },
     data() {
         return {

@@ -1,14 +1,15 @@
 <template>
     <div class="bottom-0 w-full h-12 bg-gray-500 lg:fixed bg-opacity-10"></div>
     <div class="bottom-0 flex items-center w-full h-12 text-black lg:fixed">
-        <div class="flex justify-around w-2/3">
-            <div class="px-4 py-2 hover:bg-white">Terms & Conditions</div>
-            <div class="px-4 py-2 hover:bg-white">Privacy Policy</div>
-            <div class="px-4 py-2 hover:bg-white">Contact Us</div>
+        <div class="flex justify-around w-full">
+            <router-link to="/tentang/sk" class="px-4 py-2 rounded cursor-pointer hover:bg-white">Syarat & Ketentuan</router-link>
+            <router-link to="/tentang/kebijakanprivasi" class="px-4 py-2 rounded cursor-pointer hover:bg-white">Kebijakan Privasi</router-link>
+            <router-link to="/tentang/faq" class="px-4 py-2 rounded cursor-pointer hover:bg-white">FAQ</router-link>
+            <router-link to="/tentang/layanan" class="px-4 py-2 rounded cursor-pointer hover:bg-white">Layanan Pengguna</router-link>
         </div>
     </div>
     <div
-        class="bottom-0 right-0 flex items-center justify-center w-16 h-16 m-5 bg-blue-400 rounded-full lg:fixed"
+        class="bottom-0 right-0 flex items-center justify-center w-16 h-16 m-5 duration-200 ease-in-out bg-blue-400 rounded-full cursor-pointer lg:fixed hover:bg-blue-500"
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
