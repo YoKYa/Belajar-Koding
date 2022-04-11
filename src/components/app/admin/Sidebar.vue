@@ -7,7 +7,17 @@
 				>Dashboard</router-link
 			>
 		</div>
-          <hr class="mx-4" />
+          <hr class="mx-4" v-if="checkMateri.check" />
+		<div class="flex flex-col px-4 py-1 my-2 ">
+			<label class="text-sm text-gray-400" v-if="checkMateri.check">Materi Pembelajaran</label>
+			<router-link
+				class="p-2 px-4 my-1 font-semibold transition duration-500 ease-in-out transform bg-white rounded-md cursor-pointer select-none hover:-translate-y-1 hover:shadow-lg"
+				to="/app/admin/materi"
+                    v-if="checkMateri.materi"
+				>Materi</router-link
+			>
+		</div>
+          <hr class="mx-4" v-if="checkProgramming.check" />
 		<div class="flex flex-col px-4 py-1 my-2 ">
 			<label class="text-sm text-gray-400" v-if="checkProgramming.check">Programming Language</label>
 			<router-link
@@ -17,7 +27,7 @@
 				>Language</router-link
 			>
 		</div>
-		<hr class="mx-4" />
+		<hr class="mx-4" v-if="checkUser.check"/>
 		<div class="flex flex-col px-4 py-1 my-2 ">
 			<label for="" class="text-sm text-gray-400" v-if="checkUser.check">Users</label>
 			<router-link
@@ -33,7 +43,7 @@
 				>Data Table User</router-link
 			>
 		</div>
-		<hr class="mx-4" />
+		<hr class="mx-4" v-if="checkPermission.check" />
 		<div class="flex flex-col px-4 py-1 my-2 ">
 			<label for="" class="text-sm text-gray-400" v-if="checkPermission.check"
 				>Role & Permission</label
@@ -63,13 +73,13 @@
 				>Permission to User</router-link
 			>
 		</div>
-          <hr class="mx-4" />
+          <hr class="mx-4" v-if="checkQuotes.check"/>
 		<div class="flex flex-col px-4 py-1 my-2 ">
-			<label for="" class="text-sm text-gray-400" v-if="checkQuotes.check">Quotes</label>
+			<label class="text-sm text-gray-400" v-if="checkQuotes.check">Quotes</label>
 			<router-link
 				class="p-2 px-4 my-1 font-semibold transition duration-500 ease-in-out transform bg-white rounded-md cursor-pointer select-none hover:-translate-y-1 hover:shadow-lg"
 				to="/app/admin/quotes"
-                    v-if="checkUser.createUser"
+                    v-if="checkQuotes.quotes"
 				>Quotes</router-link
 			>
 		</div>
@@ -103,6 +113,11 @@ export default {
                'check' : false,
                'language': false
           })
+          const checkMateri = reactive({
+               'check' : false,
+               'materi': false
+          })
+
           if (user.value.roles.length != 0) {
                if (user.value.roles[0].name == "super admin") {
 			checkPermission.roles = true;
@@ -119,6 +134,8 @@ export default {
                checkQuotes.quotes = true
                checkProgramming.check = true
                checkProgramming.language = true
+               checkMateri.check = true
+               checkMateri.materi = true
                } else {
                     user.value.roles.forEach((role) => {
                          role.permissions.forEach((permission) => {
@@ -142,7 +159,7 @@ export default {
                                    checkQuotes.check = true
                                    checkQuotes.quotes = true
                               }
-                              if (permission.name == 'create user' || permission.name == 'show user' ) {
+                              if (permission.name == 'create user' || permission.name == 'show users' ) {
                                    checkUser.createUser = true;
                                    checkUser.showUser = true;
                                    checkUser.check = true;
@@ -151,6 +168,10 @@ export default {
                                    checkProgramming.check = true
                                    checkProgramming.language = true
                               }
+                              if (permission.name == 'change materi') {
+                                   checkMateri.check = true
+                                   checkMateri.materi = true
+                              }
                          });
                     });
                }
@@ -158,7 +179,7 @@ export default {
                router.push('app/dashboard')
           }
 		
-		return { checkPermission, checkUser, checkQuotes, checkProgramming };
+		return { checkPermission, checkUser, checkQuotes, checkProgramming, checkMateri };
 	},
 };
 </script>

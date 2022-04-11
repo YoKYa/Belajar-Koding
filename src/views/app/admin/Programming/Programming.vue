@@ -294,30 +294,7 @@
 											</tr>
 										</tbody>
 									</table>
-									<div
-										class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between"
-									>
-										<span
-											class="text-xs text-gray-900 xs:text-sm"
-										>
-											Showing 1 to 4 of 50
-											Entries
-										</span>
-										<div
-											class="inline-flex mt-2 xs:mt-0"
-										>
-											<button
-												class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400"
-											>
-												Prev
-											</button>
-											<button
-												class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400"
-											>
-												Next
-											</button>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -498,8 +475,8 @@ import moment from "moment";
 import { onMounted, ref, reactive, computed } from "@vue/runtime-core";
 import axios from "axios";
 export default {
-	name: "Programming Language  | Panel Belajar Koding",
-	guardPermissions: "change programmingLanguage",
+	title: "Programming Language  | Panel Belajar Koding",
+	guardPermission: "change programmingLanguage",
 	components: { Sidebar, Header, Modal },
 	setup() {
 		const errors = ref([]);
@@ -678,7 +655,7 @@ export default {
 			form.name = "";
 			form.description = "";
                form.picture = "";
-						img.value = "";
+			img.value = "";
 			form.id = "";
 			edit.value = false;
 		};

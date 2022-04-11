@@ -8,30 +8,33 @@ export default {
         if (store.getters['auth/authenticated'] == true) {
             guardPermission = String(guardPermission)
             if (guardPermission == 'undefined') {
-                console
+                //  console.log('uuuu')
             } else {
+                let pass = false
                 if (user.roles.length == 0) {
                     console.log('uwu');
                     router.push('/app/dashboard')
                 } else {
-                    let pass = false
+
                     user.roles.forEach(role => {
                         if (role.name == 'super admin') {
                             pass = true
                         } else {
                             role.permissions.forEach(permission => {
                                 if (permission.name == guardPermission) {
-                                    pass = false
+                                    pass = true
                                 }
                             })
                         }
                     })
-                    if (pass == false) {
-                        router.push('/app/admin')
-                    }
+
+                }
+                if (pass == false) {
+                    router.push('/app/admin')
                 }
 
             }
+
         }
     }
 }

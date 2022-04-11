@@ -25,6 +25,8 @@ import ShowUser from '../views/app/admin/User/Show.vue'
 import EditUser from '../views/app/admin/User/Edit.vue'
 import Quotes from '../views/app/admin/Quotes/Quotes.vue'
 import ProgrammingAdmin from '../views/app/admin/Programming/Programming.vue'
+import MateriAdmin from '../views/app/admin/Materi/Materi.vue'
+import Program from '../views/app/admin/Materi/Program.vue'
 import store from '@/store'
 
 
@@ -147,6 +149,16 @@ const routes = [{
         path: '/app/admin/programming',
         name: 'ProgrammingLanguage',
         component: ProgrammingAdmin,
+        meta: { auth: true }
+    }, {
+        path: '/app/admin/materi',
+        name: 'Materi',
+        component: MateriAdmin,
+        meta: { auth: true }
+    }, {
+        path: '/app/admin/materi/:program',
+        name: 'nameMateri',
+        component: Program,
         meta: { auth: true }
     },
     { path: '/app/', redirect: { name: 'Dashboard' } },

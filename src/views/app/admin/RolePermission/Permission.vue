@@ -385,7 +385,7 @@ import axios from "axios";
 export default {
 	title: "Permissions  | Panel Belajar Koding",
 	components: { Sidebar, Header, Modal },
-     guardPermissions: 'change permissions',
+     guardPermission: 'change permissions',
 	setup() {
 		const errors = ref([]);
 		const loading = reactive({

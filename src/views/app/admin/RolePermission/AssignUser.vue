@@ -266,7 +266,7 @@ import Modal from "@/components/Modal";
 
 export default {
 	title: "Assign User | Panel Belajar Koding",
-	guardPermissions: "change permissionToUser",
+	guardPermission: "change permissionToUser",
 	components: { Sidebar, Header, Modal },
 	setup() {
 		const errors = ref([]);

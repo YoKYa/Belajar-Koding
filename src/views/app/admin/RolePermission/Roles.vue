@@ -384,7 +384,7 @@ import { onMounted, ref, reactive,  } from "@vue/runtime-core";
 import axios from "axios";
 export default {
 	title: "Roles  | Panel Belajar Koding",
-     guardPermissions: 'change roles',
+     guardPermission: 'change roles',
 	components: { Sidebar, Header, Modal },
 	setup() {
 		const errors = ref([]);

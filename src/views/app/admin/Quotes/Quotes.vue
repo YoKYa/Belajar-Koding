@@ -378,7 +378,7 @@ import { onMounted, ref, reactive } from "@vue/runtime-core";
 import axios from "axios";
 export default {
 	title: "Quotes  | Panel Belajar Koding",
-	guardPermissions: "change quotes",
+	guardPermission: "change quotes",
 	components: { Sidebar, Header, Modal },
 	setup() {
 		const errors = ref([]);

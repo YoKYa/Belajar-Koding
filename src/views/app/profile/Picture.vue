@@ -48,7 +48,7 @@
 								d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"
 							/>
 						</svg>
-						<span class="mt-2 text-base leading-normal"
+						<span class="mt-2 text-base  leading-normal"
 							>Select a file</span
 						>
 						<input
@@ -100,10 +100,10 @@
 				xmlns="http://www.w3.org/2000/svg"
 				xmlns:xlink="http://www.w3.org/1999/xlink"
 				style="
-					margin: auto;
-					background: none;
-					display: block;
-					shape-rendering: auto;
+					margin: auto
+					background: none
+					display: block
+					shape-rendering: auto
 				"
 				width="80px"
 				height="80px"
@@ -122,8 +122,8 @@
 						attributeName="r"
 						repeatCount="indefinite"
 						dur="1.7543859649122806s"
-						values="0;24"
-						keyTimes="0;1"
+						values="024"
+						keyTimes="01"
 						keySplines="0 0.2 0.8 1"
 						calcMode="spline"
 						begin="0s"
@@ -132,8 +132,8 @@
 						attributeName="opacity"
 						repeatCount="indefinite"
 						dur="1.7543859649122806s"
-						values="1;0"
-						keyTimes="0;1"
+						values="10"
+						keyTimes="01"
 						keySplines="0.2 0 0.8 1"
 						calcMode="spline"
 						begin="0s"
@@ -151,8 +151,8 @@
 						attributeName="r"
 						repeatCount="indefinite"
 						dur="1.7543859649122806s"
-						values="0;24"
-						keyTimes="0;1"
+						values="024"
+						keyTimes="01"
 						keySplines="0 0.2 0.8 1"
 						calcMode="spline"
 						begin="-0.8771929824561403s"
@@ -161,8 +161,8 @@
 						attributeName="opacity"
 						repeatCount="indefinite"
 						dur="1.7543859649122806s"
-						values="1;0"
-						keyTimes="0;1"
+						values="10"
+						keyTimes="01"
 						keySplines="0.2 0 0.8 1"
 						calcMode="spline"
 						begin="-0.8771929824561403s"
@@ -174,15 +174,15 @@
 	<loading v-if="load" />
 </template>
 <script>
-import { onBeforeMount, onMounted, ref, computed, reactive } from "vue";
-import axios from "axios";
-import store from "@/store";
-import router from "@/router";
-import Loading from "@/components/app/Loading.vue";
-import Header from "@/components/app/Head.vue";
-import Footer from "@/components/app/Foot.vue";
-import Modal from "@/components/Modal";
-import Menu from "@/components/app/profile/Menu.vue";
+import { onBeforeMount, onMounted, ref, computed, reactive } from "vue"
+import axios from "axios"
+import store from "@/store"
+import router from "@/router"
+import Loading from "@/components/app/Loading.vue"
+import Header from "@/components/app/Head.vue"
+import Footer from "@/components/app/Foot.vue"
+import Modal from "@/components/Modal"
+import Menu from "@/components/app/profile/Menu.vue"
 
 export default {
 	title: "Foto Profile | Belajar Koding",
@@ -194,70 +194,69 @@ export default {
 		Menu,
 	},
 	setup() {
-		const formImage = new FormData();
-		const img = ref("");
-		const reader = new FileReader();
+		const formImage = new FormData()
+		const img = ref("")
+		const reader = new FileReader()
 		const uploadImage = (event) => {
-			formImage.picture = event.target.files[0];
-			reader.readAsDataURL(formImage.picture);
+			formImage.picture = event.target.files[0]
+			reader.readAsDataURL(formImage.picture)
 			reader.onload = (ev) => {
-				img.value = ev.target.result;
-			};
-		};
+				img.value = ev.target.result
+			}
+		}
 		const saveImage = async () => {
 			try {
-				loading.load = true;
-				loading.text = false;
-				await axios.get("sanctum/csrf-cookie");
-				formImage.append("picture", formImage.picture);
-				let uwu = await axios.post("api/profile/picture", formImage);
-                    console.log(uwu);
-				await store.dispatch("auth/me");
-				loading.text = true;
+				loading.load = true
+				loading.text = false
+				await axios.get("sanctum/csrf-cookie")
+				formImage.append("picture", formImage.picture)
+				await axios.post("api/profile/picture", formImage)
+				await store.dispatch("auth/me")
+				loading.text = true
 				setTimeout(() => {
-					loading.load = false;
-					edit.value = false;
-					router.replace("/app/profile");
-				}, 1000);
+					loading.load = false
+					edit.value = false
+					router.replace("/app/profile")
+				}, 1000)
 			} catch (error) {
-				console.log(error.response.data.errors);
-				errors.value = error.response.data.errors;
-				loading.load = false;
+				console.log(error.response.data.errors)
+				errors.value = error.response.data.errors
+				loading.load = false
 			}
-		};
+		}
 
-		const errors = ref([]);
-		const user = computed(() => store.getters["auth/user"]);
-		const load = ref(false);
-		const edit = ref(false);
-		let picture = "";
+		const errors = ref([])
+		const user = computed(() => store.getters["auth/user"])
+		const load = ref(false)
+		const edit = ref(false)
+		let picture = ""
 		const loading = reactive({
 			load: false,
 			text: false,
-		});
+		})
 		const reload = () => {
 			if (localStorage.getItem("reloaded")) {
-				load.value = true;
-				localStorage.removeItem("reloaded");
+				load.value = true
+				localStorage.removeItem("reloaded")
 			}
-		};
+		}
 
 		if (user.value.picture == null || user.value.picture == "") {
-			let name = user.value.name;
-			picture = name.substring(0, 1);
+			let name = user.value.name
+			picture = name.substring(0, 1)
 		} else {
 			picture =
 				computed(() => store.getters["baseurl/urlStorage"]).value +
-				user.value.picture;
+				user.value.picture
 		}
 		onMounted(() => {
 			setTimeout(() => {
-				load.value = false;
-			}, 2500);
+				load.value = false
+			}, 2500)
 		}),
 			onBeforeMount(() => {
-				reload();
-			});
+				reload()
+			})
 		return {
 			load,
 			user,
@@ -268,7 +267,7 @@ export default {
 			uploadImage,
 			saveImage,
 			img,
-		};
+		}
 	},
-};
+}
 </script>
