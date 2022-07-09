@@ -7,111 +7,98 @@
           </div>
           <div class="p-3 bg-blue-400">
                <div class="flex flex-col p-2 px-1 my-2 bg-white rounded-lg bg-blue">
-                    <div class="flex w-full my-2 h-28">
-                         <div
-                              class="w-1/2 p-2 mx-4 transition duration-300 ease-in-out transform border-2 border-blue-300 rounded-lg hover:shadow-lg hover:scale-105">
+                    <div class=" grid grid-flow-row grid-cols-2 grid-rows-2 gap-1 m-2 "  v-if="loading.materi">
+                         <div v-for="index in 4" :key="index" class="mx-2 p-2 transition duration-300 ease-in-out transform border-2 border-blue-300 rounded-lg hover:shadow-lg hover:scale-105 cursor-pointer">
                               <div class="flex items-center h-full mx-2">
                                    <div class="w-1/6">
-                                        <div class="w-16 h-16 bg-blue-400 rounded-full"></div>
-                                   </div>
-                                   <div class="flex flex-col w-full leading-relaxed ">
-                                        <h4 class="h-16 mx-4 text-lg font-bold">
-                                             [Kelas PHP] Belajar Looping -
-                                             Menjaga tetap berulang
-                                        </h4>
-                                        <div class="flex items-center justify-between ">
-                                             <div class="w-auto px-3 mx-4 text-sm text-white bg-gray-500 rounded-full ">
-                                                  PHP
-                                             </div>
-                                             <div class="text-xs">
-                                                  Terakhir dilihat 2 hari yang
-                                                  lalu
-                                             </div>
+                                        <div class="w-16 h-16 bg-blue-400 rounded-full">
                                         </div>
                                    </div>
-                              </div>
-                         </div>
-                         <div
-                              class="w-1/2 p-2 mx-4 transition duration-300 ease-in-out transform border-2 border-blue-300 rounded-lg hover:shadow-lg hover:scale-105">
-                              <div class="flex items-center h-full mx-2">
-                                   <div class="w-1/6">
-                                        <div class="w-16 h-16 bg-blue-400 rounded-full "></div>
-                                   </div>
                                    <div class="flex flex-col w-full leading-relaxed ">
                                         <h4 class="h-16 mx-4 text-lg font-bold">
-                                             [Kelas PHP] Belajar Looping -
-                                             Menjaga tetap berulang
+                                             <div class="h-5 w-64 bg-blue-400 my-2 rounded-full animate-pulse"></div>
                                         </h4>
-                                        <div class="flex items-center justify-between ">
-                                             <div class="w-auto px-3 mx-4 text-sm text-white bg-gray-500 rounded-full ">
-                                                  PHP
-                                             </div>
+                                        <div class="flex items-center justify-end ">
                                              <div class="text-xs">
-                                                  Terakhir dilihat 2 hari yang
-                                                  lalu
+                                                  <div class="h-2 w-32 bg-blue-400 my-2 rounded-full animate-pulse"></div>
                                              </div>
                                         </div>
                                    </div>
                               </div>
                          </div>
                     </div>
-                    <div class="flex w-full my-2 h-28">
-                         <div
-                              class="w-1/2 p-2 mx-4 transition duration-300 ease-in-out transform border-2 border-blue-300 rounded-lg hover:shadow-lg hover:scale-105">
+                    <div class=" grid grid-flow-row grid-cols-2 grid-rows-2 gap-1 m-2 " v-else>
+                         <router-link  v-for="ls in data.lastseen" :key="ls.id" :to="{name: 'Courses', params: {slug:ls.study_class.slug}}"
+                              class="mx-2 p-2 transition duration-300 ease-in-out transform border-2 border-blue-300 rounded-lg hover:shadow-lg hover:scale-105">
                               <div class="flex items-center h-full mx-2">
                                    <div class="w-1/6">
-                                        <div class="w-16 h-16 bg-blue-400 rounded-full "></div>
+                                        <div class="w-16 h-16 bg-blue-400 rounded-full">
+                                        <img class="rounded-full " alt="Pict" :src="
+                                                            base +
+                                                            ls.study_class.picture
+                                                       " />
+                                        </div>
                                    </div>
                                    <div class="flex flex-col w-full leading-relaxed ">
                                         <h4 class="h-16 mx-4 text-lg font-bold">
-                                             [Kelas PHP] Belajar Looping -
-                                             Menjaga tetap berulang
+                                             {{ls.study_class.name}}
                                         </h4>
                                         <div class="flex items-center justify-between ">
-                                             <div class="w-auto px-3 mx-4 text-sm text-white bg-gray-500 rounded-full ">
-                                                  PHP
+                                             <div>
+                                                  
                                              </div>
                                              <div class="text-xs">
-                                                  Terakhir dilihat 2 hari yang
-                                                  lalu
+                                                  {{format_date(ls.lastseen)}}
                                              </div>
                                         </div>
                                    </div>
                               </div>
-                         </div>
-                         <div
-                              class="w-1/2 p-2 mx-4 transition duration-300 ease-in-out transform border-2 border-blue-300 rounded-lg hover:shadow-lg hover:scale-105">
-                              <div class="flex items-center h-full mx-2">
-                                   <div class="w-1/6">
-                                        <div class="w-16 h-16 bg-blue-400 rounded-full "></div>
-                                   </div>
-                                   <div class="flex flex-col w-full leading-relaxed ">
-                                        <h4 class="h-16 mx-4 text-lg font-bold">
-                                             [Kelas PHP] Belajar Looping -
-                                             Menjaga tetap berulang
-                                        </h4>
-                                        <div class="flex items-center justify-between ">
-                                             <div class="w-auto px-3 mx-4 text-sm text-white bg-gray-500 rounded-full ">
-                                                  PHP
-                                             </div>
-                                             <div class="text-xs">
-                                                  Terakhir dilihat 2 hari yang
-                                                  lalu
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+                         </router-link>
+                         
                     </div>
-               </div>
-               <div class="flex justify-end mr-2 text-right text-white">
-                    Lihat Selengkapnya
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-1 mt-1" fill="none" viewBox="0 0 24 24"
-                         stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                    </svg>
                </div>
           </div>
      </div>
 </template>
+<script>
+import store from "@/store";
+import { computed, onMounted, reactive } from "vue";
+import axios from "axios"
+import moment from "moment";
+export default {
+     setup() {
+          onMounted(() => {
+               load()
+          })
+          const user = computed(() => store.getters["auth/user"]).value;
+          const data = reactive({
+               lastseen: ''
+          })
+          const loading = reactive({
+               materi: ''
+          })
+          const load = async () => {
+               try {
+                    loading.materi = true
+                    await axios.get("sanctum/csrf-cookie")
+                    let response = await axios.post("api/lastseen", {
+                         user_id: user.id
+                    })
+                    data.lastseen = response.data
+                    loading.materi = false
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+          const base = computed(
+               () => store.getters["baseurl/urlStorage"]
+          ).value
+          function format_date(value) {
+               if (value) {
+                    return moment(String(value)).locale("id").format("LLLL");
+               }
+          }
+          return { user, format_date, data, base, loading };
+     },
+};
+</script>

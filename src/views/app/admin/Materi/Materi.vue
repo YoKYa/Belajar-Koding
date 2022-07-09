@@ -103,7 +103,6 @@ export default {
 		onMounted(() => {
 			languageGet();
 		});
-
 		return {
 			data,
 			base,

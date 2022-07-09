@@ -48,7 +48,8 @@ module.exports = {
             backgroundImage: theme => ({
                 'belajar-koding': "url('./assets/img/bk/BG.png')",
             }),
-        }
+        },
+
     },
     variants: {
         extend: {
@@ -56,6 +57,7 @@ module.exports = {
             height: ['hover', 'focus'],
             animation: ['responsive'],
             visibility: ['hover', 'focus'],
+            outline: ['hover', 'focus'],
         },
     },
     plugins: [],

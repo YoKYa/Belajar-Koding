@@ -13,6 +13,9 @@ import KebijakanPrivasi from '../views/tentang/KebijakanPrivasi.vue'
 import FAQ from '../views/tentang/FAQ.vue'
 import TentangLayanan from '../views/tentang/LayananPengguna.vue'
 import Dashboard from '../views/app/Dashboard.vue'
+import Bookshelf from '../views/app/Bookshelf.vue'
+import Courses from '../views/app/Courses.vue'
+import StudyRoom from '../views/app/StudyRoom.vue'
 import Profile from '../views/app/profile/Profile.vue'
 import Picture from '../views/app/profile/Picture.vue'
 import Admin from '../views/app/admin/Dashboard.vue'
@@ -27,6 +30,8 @@ import Quotes from '../views/app/admin/Quotes/Quotes.vue'
 import ProgrammingAdmin from '../views/app/admin/Programming/Programming.vue'
 import MateriAdmin from '../views/app/admin/Materi/Materi.vue'
 import Program from '../views/app/admin/Materi/Program.vue'
+import CodeM from '../views/app/admin/Materi/CodeM.vue'
+import Topics from '../views/app/Topics.vue'
 import store from '@/store'
 
 
@@ -91,6 +96,22 @@ const routes = [{
         component: Dashboard,
         meta: { auth: true }
     }, {
+        path: '/app/bookshelf',
+        name: 'Rak Buku Pelajaran',
+        component: Bookshelf,
+        meta: { auth: true }
+    }, {
+        path: '/app/studyroom',
+        name: 'RuangBelajar',
+        component: StudyRoom,
+        meta: { auth: true }
+    }, {
+        path: '/app/courses/:slug',
+        name: 'Courses',
+        component: Courses,
+        meta: { auth: true }
+    },
+    {
         path: '/app/profile',
         name: 'Profile',
         component: Profile,
@@ -159,6 +180,17 @@ const routes = [{
         path: '/app/admin/materi/:program',
         name: 'nameMateri',
         component: Program,
+        meta: { auth: true }
+    }, {
+        path: '/app/admin/m/:code',
+        name: 'm',
+        component: CodeM,
+        meta: { auth: true }
+    },
+    {
+        path: '/app/topics/:code',
+        name: 'Topics',
+        component: Topics,
         meta: { auth: true }
     },
     { path: '/app/', redirect: { name: 'Dashboard' } },

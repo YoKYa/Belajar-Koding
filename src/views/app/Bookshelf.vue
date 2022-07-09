@@ -1,12 +1,15 @@
-<template lang="">
-    <div class="flex flex-col items-center justify-center w-full my-5">
-            <div
-                class="px-5 py-1 text-lg text-center text-white bg-blue-400 rounded-t-3xl"
-            >
-                Rak Buku
-            </div>
-            <div class="w-full h-auto">
-               <div
+<template>
+     <Header />
+     <div v-if="!load">
+          <div class="flex">
+               <div class="h-28 bg-gray-50 w-full flex items-center text-xl font-semibold pl-32">
+                    Daftar Materi Pada Rak Buku
+               </div>
+          </div>
+          <div class="h-auto flex w-full bg-white">
+               <div class="w-full my-8">
+                    <div class="w-full h-auto">
+                         <div
                               class="flex flex-col mx-10 bg-white shadow-xl border-t-4 border-b-4 border-blue-400 rounded-t-md rounded-b-md bg-opacity-60">
                               <div class="flex items-center justify-center w-full">
                                    <div v-if="loading.language">
@@ -46,8 +49,8 @@
                               <div class="grid grid-flow-row grid-cols-3 grid-rows-2 gap-5 m-2 "
                                    v-if="loading.materi == false">
                                    <router-link  class="flex flex-row mb-2 border-gray-400"
-                                        v-for="(materi,index) in data.materi" :key="materi.id" :to="{name: 'Courses', params: {slug:materi.slug}}" >
-                                        <div v-if="data.materi && data.materi.length > 0 && index <= 6"
+                                        v-for="materi in data.materi" :key="materi.id" :to="{name: 'Courses', params: {slug:materi.slug}}">
+                                        <div
                                              class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg cursor-pointer">
                                              <div class="flex space-x-4">
                                                   <div class="rounded-full h-10 w-10">
@@ -65,19 +68,48 @@
                                    </router-link>
                               </div>
                          </div>
-            </div>
-        </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <div>
+          <Footer />
+     </div>
+     <loading v-if="load" />
 </template>
 <script>
-import { onMounted, reactive, computed } from "vue";
+import { onBeforeMount, onMounted, reactive, ref, computed } from "vue";
+import Loading from "../../components/app/Loading.vue";
+import Header from "../../components/app/Head.vue";
+import Footer from "../../components/app/Foot.vue";
+
 import axios from "axios"
 import store from "@/store"
 
 export default {
+     title: "Rak Buku | Belajar Koding",
+     components: {
+          Loading,
+          Header,
+          Footer,
+     },
      setup() {
+          const load = ref(false);
+          const reload = () => {
+               if (localStorage.getItem("reloaded")) {
+                    load.value = true;
+                    localStorage.removeItem("reloaded");
+               }
+          }
           onMounted(() => {
+               setTimeout(() => {
+                    load.value = false;
+               }, 2500);
                getLanguage()
                getMateri(1)
+          })
+          onBeforeMount(() => {
+               reload();
           })
           const base = computed(
                () => store.getters["baseurl/urlStorage"]
@@ -90,6 +122,7 @@ export default {
                language: '',
                materi: ''
           })
+
           const getLanguage = async () => {
                try {
                     loading.language = true
@@ -115,7 +148,8 @@ export default {
                     console.log(error.response.data.errors)
                }
           }
-          return { loading, data, base, getLanguage, getMateri };
-     }
-}
+
+          return { load, loading, data, base, getLanguage, getMateri };
+     },
+};
 </script>

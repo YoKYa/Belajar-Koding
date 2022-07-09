@@ -12,10 +12,10 @@ const app = createApp(App)
 app.mixin(titleMixin)
 app.mixin(checkPermissionMixin)
 
-store.dispatch('baseurl/baseStorageUrl', 'http://localhost:8000/storage/')
+store.dispatch('baseurl/baseStorageUrl', 'https://bk.yokya.id/storage/')
 
 axios.interceptors.request.use((config) => {
-    config.baseURL = 'http://localhost:8000'
+    config.baseURL = 'https://belajarkoding.id'
     config.withCredentials = true
     return config
 })

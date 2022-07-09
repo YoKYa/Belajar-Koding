@@ -41,6 +41,7 @@
                         </router-link>
                         <router-link
                             to="/app/studyroom"
+                            exact-active-class="text-blue-500 bg-transparent border-none"
                             class="flex flex-col items-center mx-2 text-xs font-semibold text-gray-500 duration-200 ease-out transform hover:text-blue-500 hover:scale-110"
                         >
                             <svg
@@ -61,6 +62,7 @@
                         </router-link>
                         <router-link
                             to="/app/bookshelf"
+                            exact-active-class="text-blue-500 bg-transparent border-none"
                             class="flex flex-col items-center mx-2 text-xs font-semibold text-gray-500 duration-200 ease-out transform hover:text-blue-500 hover:scale-110"
                         >
                             <svg
@@ -81,6 +83,7 @@
                         </router-link>
                         <router-link
                             to="/app/note"
+                            exact-active-class="text-blue-500 bg-transparent border-none"
                             class="flex flex-col items-center mx-2 text-xs font-semibold text-gray-500 duration-200 ease-out transform hover:text-blue-500 hover:scale-110"
                         >
                             <svg

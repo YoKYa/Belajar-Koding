@@ -8,38 +8,23 @@
                     </div>
                 </div>
                 <div
-                    class="flex flex-col items-center bg-green-400 border-gray-400 shadow-md bg-gray-50 h-96"
+                    class="flex flex-col items-center bg-green-400 border-gray-400 shadow-md "
                 >
-                    <div class="w-24 h-24 my-4 bg-gray-100 rounded-full"></div>
-                    <div class="text-white uppercase">Yogi Eka Prastiya</div>
-                    <div class="text-xs text-white uppercase">200 Poin</div>
+                    <div class="w-24 h-24 my-4 bg-gray-100 rounded-full flex justify-center items-center">
+                    <div v-if="toggle" class="text-4xl ">{{ picture }}</div>
+                    <img
+                            :src="picture"
+                            v-else
+                            class="rounded-full"
+                            width="60"
+                            alt="profile"
+                        />
+                    
+                                        </div>
+                    <div class="text-white uppercase">{{ user.name }}</div>
                     <div class="w-full">
-                        <div
-                            class="flex min-h-0 p-2 mx-5 my-2 overflow-hidden text-xs text-justify bg-white rounded-lg max-h-26"
-                        >
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Libero nihil tempore velit sequi eum ex
-                            fugiat, pariatur architecto ipsum consequatur,
-                            quisquam neque temporibus ullam ea quasi, rem animi
-                            nulla rerum!lor
-                        </div>
-                        <div
-                            class="flex flex-col items-center mx-2 text-sm text-white uppercase "
-                        >
-                            <div>Sedang dipelajari</div>
-                            <div class="flex">
-                                <div
-                                    class="m-1 bg-gray-100 rounded-full w-9 h-9"
-                                ></div>
-                                <div
-                                    class="m-1 bg-gray-100 rounded-full w-9 h-9"
-                                ></div>
-                                <div
-                                    class="m-1 bg-gray-100 rounded-full w-9 h-9"
-                                ></div>
-                            </div>
-                        </div>
-                        <div class="flex justify-end m-2 text-sm text-white">
+                        
+                        <router-link :to="{name: 'Profile'}" class="flex justify-end m-2 text-sm text-white">
                             Lihat Selengkapnya
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -58,11 +43,41 @@
                                     clip-rule="evenodd"
                                 />
                             </svg>
-                        </div>
+                        </router-link>
                     </div>
                 </div>
             </div>
 </template>
 <script>
-export default {};
+import store from "@/store";
+import { computed, onMounted, ref } from "vue";
+export default {
+     setup() {
+          onMounted(() => {
+               check()
+          })
+          const user = computed(() => store.getters["auth/user"]).value;
+          const base = computed(
+               () => store.getters["baseurl/urlStorage"]
+          ).value
+          const picture = ref('');
+          const toggle = ref()
+          const check = async () => {
+               if (user.picture == null || user.picture == "") {
+                    let name = user.name;
+                    picture.value = name.substring(0, 1);
+               } else {
+                    picture.value = computed(() => store.getters["baseurl/urlStorage"]).value + user.picture;
+               }
+               if (picture.value.length == 1) {
+                    toggle.value = true
+               }else{
+                    toggle.value = false
+               }
+          }
+
+          return { user, base, picture, toggle }
+
+     }
+};
 </script>
