@@ -249,7 +249,7 @@
                          </div>
                     </div>
                     <div class="h-auto bg-black w-1/2" :class="{'hidden': cd}">
-                    <iframe src="https://codex.jaagrav.in/" frameborder="0" class="h-screen w-full" ></iframe>
+                    <iframe src="https://codex.belajarkoding.id/" frameborder="0" class="h-screen w-full" ></iframe>
                     </div>
                </div>
           </div>
@@ -378,14 +378,16 @@ export default {
                } else {
                     data.page.type = 'nilai'
                     soal.nilai = soal.correct / soal.total * 100
+                    soal.nilai = parseFloat(soal.nilai).toFixed(2)
                }
           }
           const reanswer = () => {
                data.page.type = 'soal'
                soal.no = 0
                soal.answer = ''
-               soal.correct = 0,
+               soal.correct = 0
                     soal.nilai = 0
+                    getQuestion(soal.no)
           }
           return { load, loading, data, w, selected, getPage, soal, submit, reanswer,cd };
      },

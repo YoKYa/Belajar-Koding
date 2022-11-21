@@ -103,7 +103,7 @@
                                                        <label for="materi">Materi</label>
                                                        <input class="mx-2" type="radio" name="type" id="soal"
                                                             v-model="data.page.type" value="soal">
-                                                       <label for="soal" >Soal</label>
+                                                       <label for="soal">Soal</label>
                                                   </div>
                                              </div>
                                         </div>
@@ -127,7 +127,8 @@
                                    <div class="items-center justify-center m-5" v-if="data.page.type == 'soal'">
                                         <div class="text-xl font-bold text-center my-5">Soal</div>
                                         <ol class="list-decimal">
-                                             <li class="ml-6 text-lg font-semibold my-2" v-for="question in data.questions" :key="question.id">
+                                             <li class="ml-6 text-lg font-semibold my-2"
+                                                  v-for="question in data.questions" :key="question.id">
                                                   <div class="text-lg font-semibold" v-html="question.question"></div>
                                                   <div class="">A. {{ question.a }}</div>
                                                   <div class="">B. {{ question.b }}</div>
@@ -135,8 +136,9 @@
                                                   <div class="">D. {{ question.d }}</div>
                                                   <div class="">E. {{ question.e }}</div>
                                                   <div class="">F. {{ question.f }}</div>
-                                                  <div>Jawaban : {{question.answer}}</div>
-                                                  <button class="bg-red-500 px-4 rounded-lg text-white" @click="delQuestion(question.id)">Hapus Soal</button>
+                                                  <div>Jawaban : {{ question.answer }}</div>
+                                                  <button class="bg-red-500 px-4 rounded-lg text-white"
+                                                       @click="delQuestion(question.id)">Hapus Soal</button>
                                              </li>
                                         </ol>
                                         <div class="bg-gray-300 h-1 w-full rounded-xl my-2"></div>
@@ -151,49 +153,60 @@
                                                   <div class="text-lg font-semibold ml-12 mt-6">Pilihan Ganda</div>
                                                   <div class="flex p-2 mt-2">
                                                        <div class="font-semibold flex items-center w-full">
-                                                            <div class="p-2">A.</div> 
-                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg" v-model="form.question.a">
+                                                            <div class="p-2">A.</div>
+                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg"
+                                                                 v-model="form.question.a">
                                                        </div>
                                                   </div>
                                                   <div class="flex p-2 mt-2">
                                                        <div class="font-semibold flex items-center w-full">
-                                                            <div class="p-2">B.</div> 
-                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg" v-model="form.question.b">
+                                                            <div class="p-2">B.</div>
+                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg"
+                                                                 v-model="form.question.b">
                                                        </div>
                                                   </div>
                                                   <div class="flex p-2 mt-2">
                                                        <div class="font-semibold flex items-center w-full">
-                                                            <div class="p-2">C.</div> 
-                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg" v-model="form.question.c">
+                                                            <div class="p-2">C.</div>
+                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg"
+                                                                 v-model="form.question.c">
                                                        </div>
                                                   </div>
                                                   <div class="flex p-2 mt-2">
                                                        <div class="font-semibold flex items-center w-full">
-                                                            <div class="p-2">D.</div> 
-                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg" v-model="form.question.d">
+                                                            <div class="p-2">D.</div>
+                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg"
+                                                                 v-model="form.question.d">
                                                        </div>
                                                   </div>
                                                   <div class="flex p-2 mt-2">
                                                        <div class="font-semibold flex items-center w-full">
-                                                            <div class="p-2">E.</div> 
-                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg" v-model="form.question.e">
+                                                            <div class="p-2">E.</div>
+                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg"
+                                                                 v-model="form.question.e">
                                                        </div>
                                                   </div>
                                                   <div class="flex p-2 mt-2">
                                                        <div class="font-semibold flex items-center w-full">
-                                                            <div class="p-2">F.</div> 
-                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg" v-model="form.question.f">
+                                                            <div class="p-2">F.</div>
+                                                            <input type="text" class=" w-full p-2 border-2 rounded-lg"
+                                                                 v-model="form.question.f">
                                                        </div>
                                                   </div>
                                                   <div class="font-semibold mt-2 ml-2">Jawaban</div>
                                                   <div class="flex p-2 mt-2">
                                                        <div class="font-semibold flex items-center w-full">
-                                                            <input type="text" class=" w-20 p-2 border-2 rounded-lg" placeholder="A.." v-model="form.question.answer">
+                                                            <input type="text" class=" w-20 p-2 border-2 rounded-lg"
+                                                                 placeholder="A.." v-model="form.question.answer">
                                                        </div>
                                                   </div>
                                              </div>
-                                             <button class="bg-blue-600 text-white px-4 py-1 mx-2 my-2 rounded-lg focus:border-none" @click="createQuestion">Simpan</button>
-                                             <button class="bg-red-600 text-white px-4 py-1 mx-2 my-2 rounded-lg focus:border-none" @click="toggle.question = false">Batal</button>
+                                             <button
+                                                  class="bg-blue-600 text-white px-4 py-1 mx-2 my-2 rounded-lg focus:border-none"
+                                                  @click="createQuestion">Simpan</button>
+                                             <button
+                                                  class="bg-red-600 text-white px-4 py-1 mx-2 my-2 rounded-lg focus:border-none"
+                                                  @click="toggle.question = false">Batal</button>
                                         </div>
                                         <button @click="toggle.question = true" v-if="toggle.question != true"
                                              class="bg-green-600 text-white px-4 py-1 rounded-lg hover:bg-green-700 duration-150 transition-all">Tambah
@@ -348,7 +361,7 @@ export default {
           onMounted(() => {
                code.value = route.params.code
                topicGet()
-               
+
           })
           const form = reactive({
                page: {
@@ -356,15 +369,15 @@ export default {
                     content: ' ',
                     title: 'Materi Default'
                },
-               question:{
+               question: {
                     question: '',
-                    a:'',
-                    b:'',
-                    c:'',
-                    d:'',
-                    e:'',
-                    f:'',
-                    answer:'',
+                    a: '',
+                    b: '',
+                    c: '',
+                    d: '',
+                    e: '',
+                    f: '',
+                    answer: '',
                }
           })
           const route = useRoute()
@@ -379,7 +392,7 @@ export default {
           const data = reactive({
                topic: '',
                page: '',
-               questions:'',
+               questions: '',
           })
           // Toggle
           const toggle = reactive({
@@ -510,6 +523,14 @@ export default {
                          f: form.question.f,
                          answer: form.question.answer,
                     })
+                    form.question.question = ''
+                    form.question.a = ''
+                    form.question.b = ''
+                    form.question.c = ''
+                    form.question.d = ''
+                    form.question.e = ''
+                    form.question.f = ''
+                    form.question.answer = ''
                     getQuestions()
                     setTimeout(() => {
                          loading.load = false
