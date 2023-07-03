@@ -77,6 +77,7 @@ export default {
             try {
                 loading.load = true
                 loading.text = false
+                console.log(credentials);
                 await store.dispatch('auth/login', credentials)
                 await store.dispatch('auth/me')
                 loading.text = true
@@ -84,6 +85,7 @@ export default {
                     router.replace('/')
                 }, 1000);
             } catch (error) {
+                console.log(error);
                 errors.value = error.response.data.errors
                 credentials.email = ''
                 credentials.password = ''

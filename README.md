@@ -4,7 +4,10 @@
 ```
 npm install
 ```
-
+## if has error Error
+```
+- npm config set legacy-peer-deps true
+```
 ### Compiles and hot-reloads for development
 ```
 npm run serve

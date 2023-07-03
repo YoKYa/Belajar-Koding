@@ -12,10 +12,10 @@ const app = createApp(App)
 app.mixin(titleMixin)
 app.mixin(checkPermissionMixin)
 
-store.dispatch('baseurl/baseStorageUrl', 'https://apibk.yokya.id/storage/')
+store.dispatch('baseurl/baseStorageUrl', 'http://apibk.yokya.id/storage/')
 
 axios.interceptors.request.use((config) => {
-    config.baseURL = 'https://apibk.yokya.id/'
+    config.baseURL = 'http://apibk.yokya.id/'
     config.withCredentials = true
     return config
 })

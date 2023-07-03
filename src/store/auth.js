@@ -20,7 +20,8 @@ export default ({
     },
     actions: {
         async login({ dispatch }, credentials) {
-            await axios.get('sanctum/csrf-cookie')
+            const a = await axios.get('sanctum/csrf-cookie')
+            console.log(a);
             await axios.post('login', credentials)
             dispatch('me')
         },
